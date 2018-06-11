@@ -12,6 +12,7 @@ $(document).ready(function () {
 });
 
 function checkInputFields() {
+	var errorCounter = 0;
 	var name = $(".name").val();
 	var email = $(".email").val();
 	var phone = $(".phone").val();
@@ -19,25 +20,28 @@ function checkInputFields() {
 	if(name == ""){
 		$(".name").css("border", "1px solid red");
 		$(".nameError").css("visibility", "visible");
-		return false;
+		errorCounter++;
 	};
 	if(email == ""){
 		$(".email").css("border", "1px solid red");
 		$(".emailError").css("visibility", "visible");
-		return false;
+		errorCounter++;
 	};
 	if(phone == ""){
 		$(".phone").css("border", "1px solid red");
 		$(".phoneError").css("visibility", "visible");
-		return false;
+		errorCounter++;
 	};
 	if(introducing == ""){
 		$(".introducing").css("border", "1px solid red");
 		$(".introducingError").css("visibility", "visible");
-		return false;
+		errorCounter++;
 	};
 	
-	return true;
+	if (errorCounter == 0){
+		return true;
+	}
+	return false;
 }
 
 function setFieldsToDefault() {
