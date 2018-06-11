@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Form Validation</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="index.js"></script>
+</head>
+<body>
+<form name="inputForm">
+	Name: <input type="text" class="name">
+	<p style="visibility: hidden; color: red;"  class="nameError" >Invalid input text.</p> 
+	E-mail: <input type="email" class="email">
+	<p style="visibility: hidden; color: red;"  class="emailError" >Invalid e-mail address.</p> 
+	Phone: <input type="number" class="phone">
+	<p style="visibility: hidden; color: red;"  class="phoneError" >Invalid phone number.</p> 
+	Introducing: <input type="text" class="introducing">
+	<p style="visibility: hidden; color: red;"  class="introducingError" >Invalid input text.</p> 
+	<input type="button" class="button" value="Click me!">
+</form>
+<div style="visibility: hidden" class="successful">
+	<h1>Validation successful.</h1>
+</div>
+</body>
+</html>
