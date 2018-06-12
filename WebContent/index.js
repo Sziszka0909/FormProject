@@ -3,7 +3,7 @@ $(document).ready(function () {
 		setFieldsToDefault();
 		var inputsIsOk = checkInputFields();
 		ajaxCallSuccess = false;
-		TimeoutSuccess = false;
+		timeoutSuccess = false;
 		if(inputsIsOk == true) {
 			ajaxCallMethod();
 			setTimeout(getNumberOfInputs, 3000);
@@ -18,23 +18,23 @@ function checkInputFields() {
 	var phone = $(".phone").val();
 	var introducing = $(".introducing").val();
 	if(name == ""){
-		$(".name").css("border", "1px solid red");
-		$(".nameError").css("visibility", "visible");
+		$(".name").setRedTheBorder();
+		$(".nameError").setVisible();
 		errorCounter++;
 	};
 	if(email == ""){
-		$(".email").css("border", "1px solid red");
-		$(".emailError").css("visibility", "visible");
+		$(".email").setRedTheBorder();
+		$(".emailError").setVisible();
 		errorCounter++;
 	};
 	if(phone == ""){
-		$(".phone").css("border", "1px solid red");
-		$(".phoneError").css("visibility", "visible");
+		$(".phone").setRedTheBorder();
+		$(".phoneError").setVisible();
 		errorCounter++;
 	};
 	if(introducing == ""){
-		$(".introducing").css("border", "1px solid red");
-		$(".introducingError").css("visibility", "visible");
+		$(".introducing").setRedTheBorder();
+		$(".introducingError").setVisible();
 		errorCounter++;
 	};
 	
@@ -45,23 +45,23 @@ function checkInputFields() {
 }
 
 function setFieldsToDefault() {
-	$(".name").css("border", "");
-	$(".nameError").css("visibility", "hidden");
+	$(".name").setBorderToDefault();
+	$(".nameError").setHidden();
 
-	$(".email").css("border", "");
-	$(".emailError").css("visibility", "hidden");
+	$(".email").setBorderToDefault();
+	$(".emailError").setHidden();
 
-	$(".phone").css("border", "");
-	$(".phoneError").css("visibility", "hidden");
+	$(".phone").setBorderToDefault();
+	$(".phoneError").setHidden();
 
-	$(".introducing").css("border", "");
-	$(".introducingError").css("visibility", "hidden");
-	
-	$(".successful").css("visibility", "hidden");
-	$(".successful").css("marginLeft", "0px" );
+	$(".introducing").setBorderToDefault();
+	$(".introducingError").setHidden();
+
+	$(".successful").setHidden();
+	$(".successful").setMarginLeftToZero();
 	
 	ajaxCallSuccess = false;
-	TimeoutSuccess = false;
+	timeoutSuccess = false;
 }
 
 String.prototype.nice = function() {
@@ -70,7 +70,7 @@ String.prototype.nice = function() {
 
 function getNumberOfInputs() {
 	console.log($(":input").length);
-	TimeoutSuccess = true;
+	timeoutSuccess = true;
 	executeSuccess();
 }
 
@@ -84,17 +84,17 @@ function ajaxCallMethod() {
 		
 		success: function(data) {
 			if(data == "1"){
-				$(".name").css("border", "1px solid red");
-				$(".nameError").css("visibility", "visible");
+				$(".name").setRedTheBorder();
+				$(".nameError").setVisible();
 				
-				$(".introducing").css("border", "1px solid red");
-				$(".introducingError").css("visibility", "visible");
+				$(".introducing").setRedTheBorder();
+				$(".introducingError").setVisible();
 			} else if(data == "2"){
-				$(".name").css("border", "1px solid red");
-				$(".nameError").css("visibility", "visible");
+				$(".name").setRedTheBorder();
+				$(".nameError").setVisible();
 			} else if(data == "3"){
-				$(".introducing").css("border", "1px solid red");
-				$(".introducingError").css("visibility", "visible");
+				$(".introducing").setRedTheBorder();
+				$(".introducingError").setVisible();
 			}else if (data == "0"){
 				ajaxCallSuccess = true;
 				executeSuccess();
@@ -104,8 +104,8 @@ function ajaxCallMethod() {
 }
 
 function executeSuccess() {
-	if(TimeoutSuccess == true && ajaxCallSuccess == true){
-		$(".successful").css("visibility", "visible");
-		$(".successful").animate({marginLeft: "+=200px"});
+	if(timeoutSuccess == true && ajaxCallSuccess == true){
+		$(".successful").setVisible();
+		$(".successful").animateToMarginLeft();
 	}
 }
